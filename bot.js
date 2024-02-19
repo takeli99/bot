@@ -36,7 +36,7 @@ function iniciarBot() {
 
     /**
      * @brief Maneja el mensaje "si" del usuario.
-     * Si el usuario responde "si", comienza el test preguntando por la cualidad.
+     * Si el usuario responde "si", comienza el test preguntando por la cualidad y las demas preguntas
      */
 
     bot.onText(/si/i, (message) => { // El bot empieza con el usuario pone si
