@@ -1,4 +1,10 @@
 /**
+ * @fileoverview El bot de Telegram para el Test de la Casa de Harry Potter es una aplicación diseñada para interactuar con los usuarios a través de la plataforma de mensajería Telegram. Inspirado en el universo mágico de Harry Potter, este bot guía a los usuarios a través de un cuestionario interactivo para determinar a qué casa de Hogwarts podrían pertenecer según sus respuestas.
+ */
+
+
+
+/**
  * @file main.js
  * @brief Bot de Telegram para el test de la casa de Harry Potter.
  */
