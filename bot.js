@@ -1,3 +1,8 @@
+/**
+ * @file main.js
+ * @brief Bot de Telegram para el test de la casa de Harry Potter.
+ */
+
 const TelegramBot = require('node-telegram-bot-api');
 let fetch;
 const config = require( './config.json' );
@@ -11,17 +16,37 @@ try {
 }
 const bot = new TelegramBot(token, {polling: true}); // Creo el bot
 
+/**
+ * @brief Inicia el bot de Telegram.
+ */
+
 function iniciarBot() {
     const respuestasUsuario = {}; // Creo un objeto para guardar las respuestas
 
+    /**
+     * @brief Maneja el comando /start.
+     * @param message El mensaje recibido.
+     */
+
+    
     bot.onText(/\/start/, (message) => {
         const chatId = message.chat.id;
         bot.sendMessage(chatId, 'Bienvenido al test de la casa de Harry Potter, ¿estás listo para comenzar?');
     }); // Mensaje de bienvenida
 
+    /**
+     * @brief Maneja el mensaje "si" del usuario.
+     * Si el usuario responde "si", comienza el test preguntando por la cualidad.
+     */
+
     bot.onText(/si/i, (message) => { // El bot empieza con el usuario pone si
         preguntarCualidad(message);
     });
+
+    /**
+     * @brief Maneja el mensaje "no" del usuario.
+     * Si el usuario responde "no", proporciona instrucciones para comenzar el test.
+     */
 
     bot.onText(/no/i, (message) => {
         const chatId = message.chat.id;
@@ -30,6 +55,11 @@ function iniciarBot() {
     });
 
     // Funciones para preguntar cualidad, mascota, color, asignatura, lugar, hechizo, objeto mágico y mascota mágica
+    /**
+     * @brief Pregunta al usuario por la cualidad que considera más importante.
+     * @param message El mensaje recibido.
+     */
+
     function preguntarCualidad(message) {
         const chatId = message.chat.id;
         bot.sendMessage(chatId, '¿Cuál de estas cualidades consideras más importante?', {
@@ -189,6 +219,12 @@ function iniciarBot() {
     });
 }
 
+/**
+     * @brief Determina la casa de Hogwarts basada en las respuestas del usuario.
+     * @param chatId El ID del chat donde se enviará el resultado.
+     * @param respuestasUsuario Las respuestas del usuario.
+     */
+    
 function determinarCasa(chatId, respuestasUsuario) {
     let gryffindor = 0;
     let hufflepuff = 0;
