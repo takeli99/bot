@@ -23,6 +23,12 @@ function iniciarBot() {
         preguntarCualidad(message);
     });
 
+    bot.onText(/no/i, (message) => {
+        const chatId = message.chat.id;
+        bot.sendMessage(chatId, 'Entendido, cuando estés listo para comenzar, simplemente escribe /start.');
+        return;
+    });
+
     // Funciones para preguntar cualidad, mascota, color, asignatura, lugar, hechizo, objeto mágico y mascota mágica
     function preguntarCualidad(message) {
         const chatId = message.chat.id;
